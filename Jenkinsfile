@@ -1,4 +1,4 @@
-pipeline { 
+/*pipeline { 
     agent any 
     options {
         skipStagesAfterUnstable()
@@ -14,10 +14,20 @@ pipeline {
                 sh 'make check'
                 junit 'reports/**/*.xml' 
             }
-        }
+    /*    }
         stage('Deploy') {
             steps {
                 sh 'make publish'
+            }
+        }
+    }
+}*/
+pipeline {
+    agent { docker { image 'maven:3.3.3' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'mvn --version'
             }
         }
     }
