@@ -1,15 +1,13 @@
 pipeline { 
     agent any 
-    options {
-        skipStagesAfterUnstable()
-    }
+    
     stages {
         stage('Build') { 
             steps { 
                 sh 'mvn clean compile' 
             }
         }
-        stage('Test'){
+       /* stage('Test'){
             steps {
                 sh 'mvn test'
                 junit 'reports/**/*.xml' 
@@ -20,6 +18,6 @@ pipeline {
                 sh 'cp build/*.jar /home/khalil/Desktop/'
             }
         }
-    }
+    }*/
 }
 
